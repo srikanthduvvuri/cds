@@ -1,0 +1,61 @@
+# docker-compose.yml (Place at root of your project)
+
+version: '3.9'
+services:
+  mongodb:
+    image: mongo:6
+    container_name: cds-mongodb-1
+    ports:
+      - "27017:27017"
+    networks:
+      - credit-net
+
+  identity-verification:
+    build:
+      context: ./IdentityVerification
+    ports:
+      - "5002:5002"
+    networks:
+      - credit-net
+
+  risk-scoring-engine:
+    build:
+      context: ./RiskScoringEngine
+    ports:
+      - "5003:5003"
+    networks:
+      - credit-net
+        
+  credit-underwriting:
+    build:
+      context: ./CreditUnderwriting
+    ports:
+      - "5004:5004"
+    networks:
+      - credit-net
+
+  credit-decision:
+    build:
+      context: ./CreditDecision
+    ports:
+      - "5005:5005"
+    networks:
+      - credit-net
+    depends_on:
+      - risk-scoring-engine
+      - credit-underwriting
+
+  decision-wrapper:
+    build:
+      context: ./DecisionWrapper
+    ports:
+      - "5001:5001"
+    networks:
+      - credit-net
+    depends_on:
+      - identity-verification
+      - credit-decision
+
+networks:
+  credit-net:
+    driver: bridge
