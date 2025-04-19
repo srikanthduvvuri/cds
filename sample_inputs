@@ -1,0 +1,56 @@
+Valid applicant with excellent credit
+{
+    "applicant_info": {
+    "applicant_id": "1001",
+    "name": "Alice Johnson",
+    "national_id": "9876543210",
+    "income": 95000,
+    "dob": "1990-05-20",
+    "employment_status": "employed"
+  }
+}
+Fraudulent identity (fails identity verification)
+  {
+    "applicant_info": {
+      "applicant_id": "1002",
+      "name": "Bob Fraudster",
+      "national_id": "0000000000",
+      "income": 50000,
+      "dob": "1985-08-15",
+      "employment_status": "employed"
+    }
+  }
+Low income, low credit score
+  {
+    "applicant_info": {
+      "applicant_id": "1003",
+      "name": "Charlie Risky",
+      "national_id": "1112223334",
+      "income": 18000,
+      "dob": "1992-03-12",
+      "employment_status": "unemployed"
+    }
+  }
+Valid identity, employed part-time
+  {
+    "applicant_info": {
+      "applicant_id": "1004",
+      "name": "Dana Doubt",
+      "national_id": "2223334445",
+      "income": 32000,
+      "dob": "1995-07-28",
+      "employment_status": "part-time"
+    }
+  }
+
+Self-employed, high income, thin credit file
+  {
+    "applicant_info": {
+      "applicant_id": "1005",
+      "name": "Eve Solo",
+      "national_id": "3334445556",
+      "income": 120000,
+      "dob": "1988-11-11",
+      "employment_status": "self-employed"
+    }
+  }
